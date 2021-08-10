@@ -1,5 +1,8 @@
 import "./home.css"
-import Topbar from "../../components/topbar/Topbar"
+import Topbar from "../../components/homeCom/topbar/Topbar"
+import Leftbar from "../../components/homeCom/leftbar/Leftbar"
+import Feed from "../../components/homeCom/feed/Feed"
+import Rightbar from "../../components/homeCom/rightbar/Rightbar"
 
 
 export default function Home() {
@@ -8,7 +11,11 @@ export default function Home() {
                     <div>
                               <Topbar />
 
-                              Hello Body
+                              <div className="homeContainer">
+                                        <Leftbar />
+                                        <Feed />
+                                        <Rightbar />
+                              </div>
                     </div>
           )
 }
