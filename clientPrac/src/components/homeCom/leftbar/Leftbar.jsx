@@ -62,11 +62,10 @@ export default function Leftbar() {
                                         <hr className="leftbarHr" />
 
                                         <ul className="leftbarFriendList">
-                                                  <li> Tayo </li>
-
-                                                  <li> Taye </li>
-
-                                                  <li> Tosin </li>
+                                                  <li className="leftbarFriend">
+                                                            <img src="/assets/person/1.jpeg" alt="" className="leftbarFrdImg" />
+                                                            <span className="leftbarFriendName">Akanji Feyisayo</span>
+                                                  </li>
                                         </ul>
                               </div>
 
