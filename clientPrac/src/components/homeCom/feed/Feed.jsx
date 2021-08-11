@@ -1,10 +1,13 @@
 import "./feed.css"
+import { Posts } from "../../../../dummyApi"
 
 export default function Feed() {
 
           return (
                     <div className="feedContainer">
-                              Feed
+                              <div className="feedWrapper">
+                                        
+                              </div>
                     </div>
           )
 }
