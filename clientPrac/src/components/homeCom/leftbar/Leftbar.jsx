@@ -1,5 +1,7 @@
 import "./leftbar.css"
 import { RssFeed, Chat, PlayCircleFilled, Group, Bookmark, HelpOutline, WorkOutline, Event, School } from "@material-ui/icons"
+import OnlineFrds from "../leftbar/onlineFrd/OnlineFrds"
+import { Users } from "../../../dummyApi"
 
 export default function Leftbar() {
 
@@ -61,49 +63,13 @@ export default function Leftbar() {
 
                                         <hr className="leftbarHr" />
 
-                                        <ul className="leftbarFriendList">
-                                                  <li className="leftbarFriend">
-                                                            <img src="/assets/person/1.jpeg" alt="" className="leftbarFrdImg" />
-                                                            <span className="leftbarFriendName">Akanji Feyisayo</span>
-                                                  </li>
-
-                                                  <li className="leftbarFriend">
-                                                            <img src="/assets/person/1.jpeg" alt="" className="leftbarFrdImg" />
-                                                            <span className="leftbarFriendName">Akanji Feyisayo</span>
-                                                  </li>
-
-                                                  <li className="leftbarFriend">
-                                                            <img src="/assets/person/1.jpeg" alt="" className="leftbarFrdImg" />
-                                                            <span className="leftbarFriendName">Akanji Feyisayo</span>
-                                                  </li>
-
-                                                  <li className="leftbarFriend">
-                                                            <img src="/assets/person/1.jpeg" alt="" className="leftbarFrdImg" />
-                                                            <span className="leftbarFriendName">Akanji Feyisayo</span>
-                                                  </li>
-
-                                                  <li className="leftbarFriend">
-                                                            <img src="/assets/person/1.jpeg" alt="" className="leftbarFrdImg" />
-                                                            <span className="leftbarFriendName">Akanji Feyisayo</span>
-                                                  </li>
-
-                                                  <li className="leftbarFriend">
-                                                            <img src="/assets/person/1.jpeg" alt="" className="leftbarFrdImg" />
-                                                            <span className="leftbarFriendName">Akanji Feyisayo</span>
-                                                  </li>
-
-                                                  <li className="leftbarFriend">
-                                                            <img src="/assets/person/1.jpeg" alt="" className="leftbarFrdImg" />
-                                                            <span className="leftbarFriendName">Akanji Feyisayo</span>
-                                                  </li>
-
-                                                  <li className="leftbarFriend">
-                                                            <img src="/assets/person/1.jpeg" alt="" className="leftbarFrdImg" />
-                                                            <span className="leftbarFriendName">Akanji Feyisayo</span>
-                                                  </li>
-
-                                        </ul>
+                                        {
+                                                  Users.map(user => (
+                                                            <OnlineFrds user = {user}key={user.id} />
+                                                  ))
+                                        }
                               </div>
+
 
                     </div>
           )
