@@ -1,16 +1,27 @@
 import "./post.css"
 import { MoreVert } from "@material-ui/icons"
-// import { Users } from "../../../../dummyApi"
+import { Users } from "../../../../dummyApi"
 
-export default function Post() {
+export default function Post({ post }) {
+
           return (
                     <div className="post">
                               <div className="postWrapper">
                                         <div className="postTop">
                                                   <div className="postTopLeft">
-                                                            <img src="/assets/person/1.jpeg" alt="" className="postProfileImg" />
-                                                            <span className="postUsername">Akanji Feyisayo</span>
-                                                            <span className="postDate">5 mins ago</span>
+                                                            <img 
+                                                                      src={Users.filter(user => user.id === post?.userId)[0].profilePic } 
+                                                                      alt="" 
+                                                                      className="postProfileImg" 
+                                                            />
+
+                                                            <span className="postUsername">
+                                                                      { 
+                                                                                Users.filter(user =>user.id === post?.userId)[0].username
+                                                                      }
+                                                            </span>
+                                                            
+                                                            <span className="postDate">{post.date}</span>
                                                   </div>
 
                                                   <div className="postTopRight">
@@ -19,8 +30,8 @@ export default function Post() {
                                         </div>
 
                                         <div className="postCenter">
-                                                  <span className="postText">Hey! It's my first post :)</span>
-                                                  <img src="/assets/post/1.jpeg" alt="" className="postImg" />
+                                                  <span className="postText">{ post.desc}</span>
+                                                  <img src={post.photo} alt="" className="postImg" />
                                         </div>
 
                                         <div className="postBottom">
