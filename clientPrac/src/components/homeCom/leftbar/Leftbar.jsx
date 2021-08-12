@@ -66,6 +66,42 @@ export default function Leftbar() {
                                                             <img src="/assets/person/1.jpeg" alt="" className="leftbarFrdImg" />
                                                             <span className="leftbarFriendName">Akanji Feyisayo</span>
                                                   </li>
+
+                                                  <li className="leftbarFriend">
+                                                            <img src="/assets/person/1.jpeg" alt="" className="leftbarFrdImg" />
+                                                            <span className="leftbarFriendName">Akanji Feyisayo</span>
+                                                  </li>
+
+                                                  <li className="leftbarFriend">
+                                                            <img src="/assets/person/1.jpeg" alt="" className="leftbarFrdImg" />
+                                                            <span className="leftbarFriendName">Akanji Feyisayo</span>
+                                                  </li>
+
+                                                  <li className="leftbarFriend">
+                                                            <img src="/assets/person/1.jpeg" alt="" className="leftbarFrdImg" />
+                                                            <span className="leftbarFriendName">Akanji Feyisayo</span>
+                                                  </li>
+
+                                                  <li className="leftbarFriend">
+                                                            <img src="/assets/person/1.jpeg" alt="" className="leftbarFrdImg" />
+                                                            <span className="leftbarFriendName">Akanji Feyisayo</span>
+                                                  </li>
+
+                                                  <li className="leftbarFriend">
+                                                            <img src="/assets/person/1.jpeg" alt="" className="leftbarFrdImg" />
+                                                            <span className="leftbarFriendName">Akanji Feyisayo</span>
+                                                  </li>
+
+                                                  <li className="leftbarFriend">
+                                                            <img src="/assets/person/1.jpeg" alt="" className="leftbarFrdImg" />
+                                                            <span className="leftbarFriendName">Akanji Feyisayo</span>
+                                                  </li>
+
+                                                  <li className="leftbarFriend">
+                                                            <img src="/assets/person/1.jpeg" alt="" className="leftbarFrdImg" />
+                                                            <span className="leftbarFriendName">Akanji Feyisayo</span>
+                                                  </li>
+
                                         </ul>
                               </div>
 
