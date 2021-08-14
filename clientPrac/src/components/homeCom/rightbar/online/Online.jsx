@@ -4,24 +4,21 @@ export default function Online(  { user }) {
 
           return (
                     <div>
-                              <ul className="rightbarFriendList">
-                                        <li className="rightbarFriend">
-                                                  <div className="rightbarProfileImgContainer">
-                                                            <img 
-                                                                      src= { user.profilePic } 
-                                                                      alt="" 
-                                                                      className="rightbarProfileImg" 
-                                                            />
-                                                            
-                                                            <span className="rightbarOnline"></span>
-                                                  </div>
+                              <li className="rightbarFriend">
+                                        <div className="rightbarProfileImgContainer">
+                                                  <img 
+                                                            src= { user.profilePic } 
+                                                            alt="" 
+                                                            className="rightbarProfileImg" 
+                                                  />
                                                   
-                                                  <span className="rightbarUsername">
-                                                            { user.username }
-                                                  </span>
-                                        </li>
-                              </ul>
-
+                                                  <span className="rightbarOnline"></span>
+                                        </div>
+                                        
+                                        <span className="rightbarUsername">
+                                                  { user.username }
+                                        </span>
+                              </li>
                     </div>
           )
 }

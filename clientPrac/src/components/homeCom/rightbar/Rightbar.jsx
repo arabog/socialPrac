@@ -2,12 +2,12 @@ import "./rightbar.css"
 import { Users } from "../../../dummyApi"
 import Online from "../rightbar/online/Online"
 
-export default function Rightbar( { post }) {
+export default function Rightbar( { profile }) {
 
-          return (
-                    <div className="rightbar">
-                              <div className="rightbarWrapper">
+          const HomeRightbar = () => {
 
+                    return (
+                              <>
                                         <div className="birthdayContainer">
                                                   <img src="assets/gift.png" alt="" className="birthdayImg" />
 
@@ -20,11 +20,49 @@ export default function Rightbar( { post }) {
 
                                         <h4 className="rightbarTitle">Online Friends:</h4>
                                         
-                                        {
-                                                  Users.map(user => (
-                                                            <Online  user ={user} key={user.id} />
-                                                  ))
-                                        }
+                                        <ul className="rightbarFriendList">
+                                                  {
+                                                            Users.map(user => (
+                                                                      <Online  user ={user} key={user.id} />
+                                                            ))
+                                                  }
+                                        </ul>
+                              </>
+                    )
+          }
+
+          const ProfileRightbar = () => {
+
+                    return (
+                              <>
+                                        <h4 className="rightbarTitle">User Information:</h4>
+
+                                        <div className="rightbarInfo">
+                                                  <div className="rightbarInfoItem">
+                                                            <span className="rightbarInfoKey">City:</span>
+                                                            <span className="rightbarInfoValue">Ibadan</span>
+                                                  </div>
+
+                                                  <div className="rightbarInfoItem">
+                                                            <span className="rightbarInfoKey">From:</span>
+                                                            <span className="rightbarInfoValue">Nigeria</span>
+                                                  </div>
+
+                                                  <div className="rightbarInfoItem">
+                                                            <span className="rightbarInfoKey">Relationship: </span>
+                                                            <span className="rightbarInfoValue">Married</span>
+                                                  </div>
+
+                                        </div>
+                              </>
+                    )
+          }
+
+          return (
+                    <div className="rightbar">
+                              <div className="rightbarWrapper">
+                                        <ProfileRightbar />
+
                               </div>
                     </div>
           )

@@ -1,13 +1,3 @@
-.rightbarFriendList {
-          padding: 0;
-          margin: 0;
-          list-style: none;
-}
-
-.rightbarTitle {
-          margin-bottom: 20px;
-}
-
 .rightbarFriend {
           display: flex;
           align-items: center;
