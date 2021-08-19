@@ -4,11 +4,14 @@ const bcrypt = require("bcrypt")
 
 // register
 router.post("/register", async (req, res) => {
+          // encrypt password
           const salt = await bcrypt.genSalt(10)
           const hashedPassword = await bcrypt.hash(req.body.password, salt)
 
+          // cr8 new user
           const newUser = await new User(
                     {
+                              // info supplied 4rm postman
                               username: req.body.username,
                               email: req.body.email,
                               // password: req.body.password
@@ -24,8 +27,9 @@ router.post("/register", async (req, res) => {
                     res.status(500).json(err)
           }
 
-
 })
+
+
 
 // login 
 router.post("/login", async(req, res) => {

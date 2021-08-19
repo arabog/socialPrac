@@ -35,12 +35,12 @@ const UserSchema= new mongoose.Schema(
                               default: ""
                     },
 
-                    ufollowers: {
+                    followers: {
                               type: Array,
                               default: []
                     },
 
-                    ifollowings: {
+                    followings: {
                               type: Array,
                               default: []
                     },
