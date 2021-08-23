@@ -15,22 +15,22 @@ function App() {
 
 			<Switch>
 
-				<Route exact to="/">
+				<Route exact path="/">
 					<Home />
 				</Route>
 
 
-				<Route to="/login">
+				<Route path="/login">
 					<Login />
 				</Route>
 
 
-				<Route to="/register">
+				<Route path="/register">
 					<Register />
 				</Route>
 
 
-				<Route to="/profile/:username">
+				<Route path="/profile/:username">
 					<Profile />
 				</Route>
 

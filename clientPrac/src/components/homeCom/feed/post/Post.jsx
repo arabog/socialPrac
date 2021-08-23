@@ -7,6 +7,8 @@ export default function Post({ post }) {
           const [like, setLike] = useState(post.like)
           const [isLike, setIsLike] = useState(false)
 
+          const PF = process.env.REACT_APP_PUBLIC_FOLDER 
+
           const likeHandle = () => {
                     setLike(isLike ? like - 1 : like + 1)
                     setIsLike(!isLike)
@@ -39,19 +41,19 @@ export default function Post({ post }) {
 
                                         <div className="postCenter">
                                                   <span className="postText">{ post.desc}</span>
-                                                  <img src={post.photo} alt="" className="postImg" />
+                                                  <img src={PF+post.photo} alt="" className="postImg" />
                                         </div>
 
                                         <div className="postBottom">
                                                   <div className="postBottomLeft">
                                                             <img 
-                                                                      src="/assets/like.png" 
+                                                                      src={`${PF}like.png`}
                                                                       alt="" 
                                                                       className="likeIcon" 
                                                                       onClick={likeHandle}          
                                                             />
                                                             <img 
-                                                                      src="/assets/heart.png" 
+                                                                      src={`${PF}heart.png`}
                                                                       alt="" 
                                                                       className="likeIcon" 
                                                                       onClick={likeHandle}          

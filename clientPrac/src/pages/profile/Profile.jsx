@@ -5,6 +5,8 @@ import Feed from "../../components/homeCom/feed/Feed"
 import Rightbar from "../../components/homeCom/rightbar/Rightbar"
 
 export default function Profile() {
+          const PF = process.env.REACT_APP_PUBLIC_FOLDER
+          
           return (
                     <div>
                                <Topbar />
@@ -16,8 +18,8 @@ export default function Profile() {
                                                   <div className="profileRightTop">
 
                                                             <div className="profileCover">          
-                                                                      <img src="assets/post/3.jpeg" alt="" className="profileCoverImg" />
-                                                                      <img src="assets/person/8.jpeg" alt="" className="profileUserImg" />
+                                                                      <img src={`${PF}post/3.jpeg`} alt="" className="profileCoverImg" />
+                                                                      <img src={`${PF}person/8.jpeg`} alt="" className="profileUserImg" />
                                                             </div>
 
                                                             <div className="profileInfo">
