@@ -6,23 +6,20 @@ const morgan = require("morgan")
 const helmet = require("helmet")
 
 
+dotenv.config()
+
+// db setup
+const dbSetup = require("./db/db")
+
+
 // routes
 const userRoute = require("./routes/users")
 const authRoute = require("./routes/auth")
 const postRoute = require("./routes/posts")
 
 
-dotenv.config()
-
-
-mongoose.connect(process.env.MONGO_URL, 
-          {
-                    useNewUrlParser: true, 
-                    useUnifiedTopology: true
-          }, 
-
-          () => {console.log("Connected to MongoDB")}
-);
+// db called
+dbSetup()
 
 
 // middleware 
