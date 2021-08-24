@@ -85,7 +85,7 @@ router.put("/:id/like", async (req, res) => {
                                         }
                               )
 
-                              res.status(200).json("The Post Has Been Unliked")
+                              res.status(200).json("The Post Has Been Disliked")
                     }
           } catch (err) {
                     res.status(500).json(err)
