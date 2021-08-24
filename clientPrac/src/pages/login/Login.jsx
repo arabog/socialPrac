@@ -1,6 +1,15 @@
+import { useRef } from 'react'
 import './login.css'
 
 export default function Login() {
+          const email = useRef()
+          const password = useRef()
+
+          const handleClick = (e) => {
+                    e.preventDefault()
+                    console.log(email.current.value)
+          }
+
           return (
                     <div className="login">
 
@@ -13,14 +22,29 @@ export default function Login() {
                                         </div>
 
                                         <div className="loginRight">
-                                                  <div className="loginBox">
-                                                            <input type="email" className="loginInput" placeholder="Email" />
-                                                            <input type="password" className="loginInput" placeholder="Password" />
+                                                  <form className="loginBox" onSubmit={handleClick}>
+                                                            <input 
+                                                                      type="email" 
+                                                                      className="loginInput" 
+                                                                      placeholder="Email" 
+                                                                      ref={email} 
+                                                                      required 
+                                                            />
+
+                                                            <input 
+                                                                      type="password" 
+                                                                      className="loginInput" 
+                                                                      placeholder="Password" 
+                                                                      ref={password} 
+                                                                      required 
+                                                                      minLength = "6"
+                                                            />
+
                                                             <button className="loginButton">Log In</button>
 
                                                             <span className="loginForget">Forget Password?</span>
                                                             <button className="loginRegisterButton">Create a New Account</button>
-                                                  </div>
+                                                  </form>
                                         </div>
                               </div>
                               

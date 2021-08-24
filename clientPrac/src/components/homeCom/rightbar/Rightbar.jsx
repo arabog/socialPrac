@@ -2,7 +2,7 @@ import "./rightbar.css"
 import { Users } from "../../../dummyApi"
 import Online from "../rightbar/online/Online"
 
-export default function Rightbar( { profile }) {
+export default function Rightbar( { newuser }) {
           const PF = process.env.REACT_APP_PUBLIC_FOLDER
 
           const HomeRightbar = () => {
@@ -41,17 +41,22 @@ export default function Rightbar( { profile }) {
                                         <div className="rightbarInfo">
                                                   <div className="rightbarInfoItem">
                                                             <span className="rightbarInfoKey">City:</span>
-                                                            <span className="rightbarInfoValue">Ibadan</span>
+                                                            <span className="rightbarInfoValue">{newuser.city}</span>
                                                   </div>
 
                                                   <div className="rightbarInfoItem">
                                                             <span className="rightbarInfoKey">From:</span>
-                                                            <span className="rightbarInfoValue">Nigeria</span>
+                                                            <span className="rightbarInfoValue">{newuser.from}</span>
                                                   </div>
 
                                                   <div className="rightbarInfoItem">
                                                             <span className="rightbarInfoKey">Relationship:</span>
-                                                            <span className="rightbarInfoValue">Married</span>
+                                                            <span className="rightbarInfoValue">{newuser.relationship === 1 
+                                                                                                                                  ? "Single" 
+                                                                                                                                  : newuser.relationship === 2 ? "Married"
+                                                                                                                                  : "-"
+                                                                                                                        }
+                                                            </span>
                                                   </div>
 
                                         </div>
@@ -96,7 +101,7 @@ export default function Rightbar( { profile }) {
           return (
                     <div className="rightbar">
                               <div className="rightbarWrapper">
-                                        { profile ? <ProfileRightbar /> : <HomeRightbar /> }
+                                        { newuser ? <ProfileRightbar /> : <HomeRightbar /> }
 
                               </div>
                     </div>
