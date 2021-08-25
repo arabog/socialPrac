@@ -1,5 +1,5 @@
 import './share.css'
-import { PermMedia, Label, Room, EmojiEmotions } from "@material-ui/icons"
+import { PermMedia, Label, Room, EmojiEmotions, Cancel } from "@material-ui/icons"
 import { useContext, useRef, useState } from 'react'
 import {AuthContext} from "../../../../context/AuthContext"
 import axios from 'axios'
@@ -66,6 +66,21 @@ export default function Share() {
 
                                         <hr className="shareHr" />
 
+
+                                        {
+                                                  file && (
+                                                            <div className="shareImageContainer">
+                                                                      <img 
+                                                                                alt="" 
+                                                                                className="shareImg" 
+                                                                                src={URL.createObjectURL(file)} 
+                                                                      />
+
+                                                                      <Cancel className="shareCancelImg" onClick={() => setFile(null)} />
+                                                            </div>
+                                                  )
+                                        }
+
                                         <form className="shareBottom" onSubmit={submitHandler}>
 
                                                   <div className="shareOptions">
@@ -99,7 +114,7 @@ export default function Share() {
 
                                                   </div>
 
-                                                  <button type="submit"className="shareButton">
+                                                  <button type="submit"className="shareButton" onSubmit={(e) => e.preventDefault()}>
                                                             Share
                                                   </button>
                                         </form>
