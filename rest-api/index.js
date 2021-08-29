@@ -12,6 +12,9 @@ const path = require("path")
 const userRoute = require("./routes/users")
 const authRoute = require("./routes/auth")
 const postRoute = require("./routes/posts")
+const conversationRoute = require("./routes/conversations")
+const messageRoute = require("./routes/messages")
+
 
 dotenv.config()
 const PORT = process.env.PORT || 5000
@@ -26,12 +29,16 @@ mongoose.connect(process.env.MONGO_URL,
           () => {console.log("Connected to MongoDB")}
 );
 
+
+// path
 app.use("/images", express.static(path.join(__dirname, "public/images")))
+
 
 // middleware 
 app.use(express.json())
 app.use(helmet())
 app.use(morgan("common"))
+
 
 // multer
 const storage = multer.diskStorage({
@@ -44,6 +51,7 @@ const storage = multer.diskStorage({
           },
 });
 
+
 const upload = multer({ storage: storage });
 
 app.post("/api/upload", upload.single("file"), (req, res) => {
@@ -54,9 +62,13 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
           }
 });
 
+
+// endpts
 app.use("/api/users", userRoute)
 app.use("/api/auth", authRoute)
 app.use("/api/posts", postRoute)
+app.use("/api/conversations", conversationRoute)
+app.use("/api/messages", messageRoute)
 
 
 app.listen(PORT, () => {
