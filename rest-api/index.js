@@ -14,6 +14,7 @@ const authRoute = require("./routes/auth")
 const postRoute = require("./routes/posts")
 
 dotenv.config()
+const PORT = process.env.PORT || 5000
 
 
 mongoose.connect(process.env.MONGO_URL, 
@@ -44,7 +45,8 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
-          app.post("/api/upload", upload.single("file"), (req, res) => {
+
+app.post("/api/upload", upload.single("file"), (req, res) => {
           try {
                     return res.status(200).json("File uploded successfully");
           } catch (error) {
@@ -57,6 +59,6 @@ app.use("/api/auth", authRoute)
 app.use("/api/posts", postRoute)
 
 
-app.listen(5000, () => {
-          console.log("Backend server is running");
+app.listen(PORT, () => {
+          console.log(`Backend server is running on port ${PORT}`);
 })
