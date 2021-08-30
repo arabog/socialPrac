@@ -6,14 +6,52 @@ import ChatOnline from "../../components/chat/chatOnline/ChatOnline"
 import { useContext, useEffect, useRef, useState } from "react"
 import { AuthContext } from "../../context/AuthContext"
 import axios from "axios"
+import {io} from "socket.io-client"
+
 
 export default function Messenger() {
           const [conversations, setConversations] = useState([])
           const [currentChat, setCurrentChat] = useState(null)
           const [messages, setMessages] = useState([])
           const [newMessages, setNewMessages] = useState("")
+          const [arrivalMessages, setArrivalMessages] = useState(null)
+          const [onlineUsers, setOnlineUsers] = useState([])
+          const socket = useRef()
           const { user } = useContext(AuthContext)
-          const scrollRef = useRef()
+          const scrollRef = useRef() 
+
+
+          useEffect(() => {
+                    socket.current = io("ws://localhost:8900")
+
+                    socket.current.on("getMessage", data => {
+                              // relatle to db
+                              setArrivalMessages ({
+                                        sender: data.senderId,
+                                        text: data.text,
+                                        createdAt: Date.now()
+                              })
+                    })
+          }, [])
+
+
+          useEffect( () => {
+                    arrivalMessages 
+                    && currentChat?.members.includes(arrivalMessages.sender) 
+                    && setMessages( prev => [...prev, arrivalMessages])
+          }, [arrivalMessages, currentChat])
+
+
+          useEffect(() => {
+                    socket.current.emit("addUser", user._id);
+
+                    socket.current.on("getUsers", (users) => {
+                              setOnlineUsers(
+                                        user.followings.filter((f) => users.some((u) => u.userId === f))
+                              );
+                    });
+                    
+          }, [user]);
 
 
           useEffect(() => {
@@ -31,6 +69,7 @@ export default function Messenger() {
                     getConversations()
           }, [user._id])
 
+          console.log(onlineUsers)
 
           useEffect(() => {
                     const getMessages = async () => {
@@ -46,6 +85,7 @@ export default function Messenger() {
                     getMessages()
           }, [currentChat])
 
+
           const handleSubmit = async (e) => {
                     e.preventDefault()
 
@@ -54,6 +94,15 @@ export default function Messenger() {
                               text: newMessages,
                               conversationId: currentChat._id
                     }
+
+                    const receiverIdss = currentChat.members.find(m => m !== user._id)
+
+                    // msg to be sent on each click
+                    socket.current.emit ("sendMessage", {
+                              senderId: user._id,
+                              receiverId: receiverIdss,
+                              text: newMessages
+                    })
 
                     try {
                               const res = await axios.post("/messages", message)
@@ -66,9 +115,11 @@ export default function Messenger() {
                     }
           }
 
+
           useEffect(() => {
                     scrollRef.current?.scrollIntoView({behavior: "smooth"})
           })
+          
 
           return (
                     <>
@@ -138,10 +189,11 @@ export default function Messenger() {
                                         <div className="chatOnline">
                                                   <div className="chatOnlineWrapper">
                                                                       <div className="chatOnlineWrapper">
-                                                                                <ChatOnline />
-                                                                                <ChatOnline />
-
-                                                                                <ChatOnline />
+                                                                                <ChatOnline 
+                                                                                          onlineUsers = {onlineUsers} 
+                                                                                          currentId = {user._id}
+                                                                                          setCurrentChat={setCurrentChat}
+                                                                                />
                                                                       </div>
                                                   </div>
                                         </div>
