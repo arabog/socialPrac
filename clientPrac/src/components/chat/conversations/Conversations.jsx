@@ -4,7 +4,7 @@ import "./conversations.css"
 
 export default function Conversation( {conversation, currentUser }) {
 
-          const [user, setUser] = useState(null)
+          const [user, setUser] = useState({})
           const PF = process.env.REACT_APP_PUBLIC_FOLDER
 
           useEffect(() => {
@@ -16,6 +16,7 @@ export default function Conversation( {conversation, currentUser }) {
                                         const res = await axios("/users?userId="+friendId)
                                         
                                         setUser(res.data)
+                                        console.log(res)
                               } catch (err) {
                                         console.log(err)
                               }

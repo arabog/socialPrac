@@ -11,6 +11,7 @@ export default function Messenger() {
           const [conversations, setConversations] = useState([])
           const { user } = useContext(AuthContext)
 
+
           useEffect(() => {
                     const getConversations = async () => {
                               try {
@@ -36,7 +37,7 @@ export default function Messenger() {
                                                             <input type="text" placeholder="Search for friends" className="chatMenuInput" />
                                                             
                                                             {conversations.map( con => (
-                                                                      <Conversations conversation = {con}  currentUser={user} />
+                                                                      <Conversations key= {con._id} conversation = {con}  currentUser={user} />
 
                                                             ))}
 
