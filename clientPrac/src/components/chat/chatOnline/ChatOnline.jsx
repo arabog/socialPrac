@@ -20,9 +20,12 @@ export default function ChatOnline({ onlineUsers, currentId , setCurrentChat }) 
 
 
           useEffect(() => {
-                    setOnlineFriends(friends.filter((f) => console.log(f._id)))
-          }, [friends, onlineUsers])
+                    let chat = friends.filter((f) => f !== onlineUsers.includes(f._id));
 
+                    setOnlineFriends(chat)
+          }, [friends, onlineUsers]);
+
+          // console.log(onlineUsers)
 
           return (
                     <div className="chatOnline">
@@ -49,5 +52,6 @@ export default function ChatOnline({ onlineUsers, currentId , setCurrentChat }) 
                                         ))
                               }
                     </div>
+
           )
 }

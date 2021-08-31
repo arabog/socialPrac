@@ -53,7 +53,7 @@ export default function Messenger() {
                     
           }, [user]);
 
-
+          
           useEffect(() => {
                     const getConversations = async () => {
                               try {
@@ -69,7 +69,6 @@ export default function Messenger() {
                     getConversations()
           }, [user._id])
 
-          console.log(onlineUsers)
 
           useEffect(() => {
                     const getMessages = async () => {
